@@ -47,17 +47,17 @@ pipeline {
             // }
     }
          
-    post {
-   	    always {
-   		    notify('started')
-   	    }
-   	    failure {
-   		    notify('err')
-   	    }
-   	    success {
-   		    notify('success')
-   	    }
-    }
+    // post {
+   	//     always {
+   	// 	    notify('started')
+   	//     }
+   	//     failure {
+   	// 	    notify('err')
+   	//     }
+   	//     success {
+   	// 	    notify('success')
+   	//     }
+    // }
 }
  
 // def notify(status){
