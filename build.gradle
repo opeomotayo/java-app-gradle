@@ -14,12 +14,12 @@ plugins {
 // 	// version = ''
 // }
 
-// group = 'com.nisum.mytime' //com.tomgregory
+// group = 'com.nisum.mytime'
 // version = '0.0.1-SNAPSHOT'
 // sourceCompatibility = 1.8
 
 // baseName = 'myTeam'
-group = 'com.nisum.mytime'
+group = 'com.tomgregory'
 version = scmVersion.version
 sourceCompatibility = 8
 

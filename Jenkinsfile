@@ -54,11 +54,11 @@ pipeline {
                         // echo "repository: $repository"
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
-                        [[  artifactId: 'spring-boot-api-example', 
+                        [[  artifactId: 'java-app-gradle', 
                             file: 'build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar',
                             type: 'war']], 
                             credentialsId: 'nexusAdminCreds', 
-                            groupId: 'com.nisum.mytime', 
+                            groupId: 'com.tomgregory', 
                             nexusUrl: 'http://172.16.16.101:8081/nexus', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
