@@ -55,17 +55,16 @@ pipeline {
                         // echo "repository: $repository"
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
-                        [[  artifactId: 'spring-boot-api-example', 
+                        [[  artifactId: 'java-app-gradle', 
                             file: "build/libs/spring-boot-api-example-1.0.0.jar", //build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar'
                             type: 'jar']], 
                             credentialsId: 'nexusAdminCreds', 
-                            groupId: 'com.nisum.mytime', 
+                            groupId: 'com.opeomotayo', 
                             nexusUrl: '172.16.16.101:8081', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
-                            repository: 'spring-boot-api-example-release', 
-                            // version: "0.0.1"
-                            version: "1.0.${BUILD_NUMBER}"
+                            repository: 'java-app-gradle-release', 
+                            version: "1.0.${BUILD_NUMBER}" //"1.0.0"
                     }
                 }
             }
