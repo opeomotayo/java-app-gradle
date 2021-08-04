@@ -5,9 +5,9 @@ pipeline {
         stage('Build') {
         	steps {
                 // sh './gradlew -b build.gradle clean build'  
-                // sh './gradlew assemble'   
-                sh './gradlew build'
-                sh './gradlew -b build.gradle package'
+                sh './gradlew assemble'   
+                // sh './gradlew build'
+
             }
         }
          
