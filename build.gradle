@@ -8,11 +8,11 @@ plugins {
     id 'jp.classmethod.aws.cloudformation' version '0.41'
 }
 
-// war {
-// 	dependsOn test
-// 	// baseName = 'myTeam'
-// 	version = ''
-// }
+war {
+	dependsOn test
+	baseName = 'myTeam'
+	// version = ''
+}
 
 // group = 'com.nisum.mytime' //com.tomgregory
 // version = '0.0.1-SNAPSHOT'
