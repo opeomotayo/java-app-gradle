@@ -20,7 +20,7 @@ plugins {
 
 // baseName = 'myTeam'
 group = 'com.tomgregory'
-version = "1.0.${BUILD_NUMBER}"
+version = '1.0.0'
 // version = scmVersion.version
 sourceCompatibility = 8
 
