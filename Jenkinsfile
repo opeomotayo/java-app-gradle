@@ -57,7 +57,7 @@ pipeline {
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
                         [[  artifactId: 'spring-boot-api-example', 
-                            file: "build/libs/spring-boot-api-example-${version}.jar", //build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar'
+                            file: "build/libs/spring-boot-api-example-1.0.${BUILD_NUMBER}.jar", //build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar'
                             type: 'jar']], 
                             credentialsId: 'nexusAdminCreds', 
                             groupId: 'com.nisum.mytime', 
