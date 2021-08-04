@@ -62,7 +62,7 @@ pipeline {
                             nexusUrl: 'http://172.16.16.101:8081/nexus', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
-                            repository: 'java-app-gradle-release', 
+                            repository: 'spring-boot-api-example-release', 
                             version: "0.0.1"
                             // version: "1.0.${BUILD_NUMBER}"
                     }
