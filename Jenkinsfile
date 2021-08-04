@@ -59,7 +59,7 @@ pipeline {
                             file: "build/libs/spring-boot-api-example-1.0.0.jar", //build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar'
                             type: 'jar']], 
                             credentialsId: 'nexusAdminCreds', 
-                            groupId: 'ccom.tomgregory', 
+                            groupId: 'com.tomgregory', 
                             nexusUrl: '172.16.16.101:8081', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
