@@ -6,7 +6,7 @@ pipeline {
         	steps {
                 // sh './gradlew -b build.gradle clean build'  
                 // sh './gradlew assemble'   
-                sh './gradlew package'
+                sh './gradlew b build.gradle package'
             }
         }
          
