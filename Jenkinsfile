@@ -4,7 +4,8 @@ pipeline {
 	
         stage('Build') {
         	steps {
-                sh './gradlew -b build.gradle clean build'      
+                sh './gradlew -b build.gradle clean build'  
+                sh './gradlew assemble'   
             }
         }
          
@@ -40,9 +41,9 @@ pipeline {
                 steps {
                     script {
                         sh "pwd"
-                        echo "ls -la"
-                        echo "ls -la target/"
-                        echo "ls -la build/libs/"
+                        sh "ls -la"
+                        sh "ls -la target/"
+                        sh "ls -la build/libs/"
                         // echo "artifactId: $artifactId"
                         // echo "file: $file"
                         // echo "type: $type"
