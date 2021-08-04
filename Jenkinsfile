@@ -39,6 +39,8 @@ pipeline {
             stage('Artifact Uploader') {
                 steps {
                     script {
+                        sh "pwd"
+                        echo "ls -la build/libs/"
                         // echo "artifactId: $artifactId"
                         // echo "file: $file"
                         // echo "type: $type"
@@ -51,7 +53,7 @@ pipeline {
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
                         [[  artifactId: 'myTeam', 
-                            file: 'build/libs/*.war', //myTeam.war
+                            file: 'build/libs/myTeam.war',
                             type: 'war']], 
                             credentialsId: 'nexusAdminCreds', 
                             groupId: 'com.nisum.mytime', 
