@@ -20,7 +20,8 @@ plugins {
 
 // baseName = 'myTeam'
 group = 'com.tomgregory'
-version = scmVersion.version
+version = '0.0.1'
+// version = scmVersion.version
 sourceCompatibility = 8
 
 repositories {
