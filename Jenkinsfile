@@ -54,8 +54,8 @@ pipeline {
                         // echo "repository: $repository"
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
-                        [[  artifactId: 'myTeam', 
-                            file: 'build/libs/myTeam.war',
+                        [[  artifactId: 'spring-boot-api-example', 
+                            file: 'build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar',
                             type: 'war']], 
                             credentialsId: 'nexusAdminCreds', 
                             groupId: 'com.nisum.mytime', 
