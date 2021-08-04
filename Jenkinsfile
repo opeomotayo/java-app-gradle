@@ -4,10 +4,9 @@ pipeline {
 	
         stage('Build') {
         	steps {
-                // sh './gradlew -b build.gradle clean build'  
-                // sh './gradlew clean assemble'   
-                sh './gradlew clean build'
-
+                script {
+                    sh './gradlew -b build.gradle clean build'
+                }
             }
         }
          
@@ -57,7 +56,7 @@ pipeline {
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
                         [[  artifactId: 'spring-boot-api-example', 
-                            file: "build/libs/spring-boot-api-example-1.0.${BUILD_NUMBER}.jar", //build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar'
+                            file: "build/libs/spring-boot-api-example-1.0.0.jar", //build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar'
                             type: 'jar']], 
                             credentialsId: 'nexusAdminCreds', 
                             groupId: 'com.nisum.mytime', 
