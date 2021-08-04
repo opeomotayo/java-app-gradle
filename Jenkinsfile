@@ -40,6 +40,8 @@ pipeline {
                 steps {
                     script {
                         sh "pwd"
+                        echo "ls -la"
+                        echo "ls -la target/"
                         echo "ls -la build/libs/"
                         // echo "artifactId: $artifactId"
                         // echo "file: $file"
