@@ -56,12 +56,12 @@ String imageName = "${dockerHubUsernameProperty}/spring-boot-api-example:$versio
 //     buildArgs([JAR_FILE: bootJar.archiveFileName.get()])
 // }
 
-// dockerRun {
-//     name project.name
-//     image imageName
-//     ports '8080:8080'
-//     clean true
-// }
+dockerRun {
+    name project.name
+    image imageName
+    ports '8080:8080'
+    clean true
+}
 
 aws {
     region = findProperty('region') ?: 'us-east-1'
