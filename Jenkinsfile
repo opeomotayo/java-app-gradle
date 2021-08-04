@@ -42,7 +42,6 @@ pipeline {
                     script {
                         sh "pwd"
                         sh "ls -la"
-                        sh "ls -la target/"
                         sh "ls -la build/libs/"
                         // echo "artifactId: $artifactId"
                         // echo "file: $file"
