@@ -59,7 +59,7 @@ pipeline {
                             type: 'jar']], 
                             credentialsId: 'nexusAdminCreds', 
                             groupId: 'com.tomgregory', 
-                            nexusUrl: 'http://172.16.16.101:8081', 
+                            nexusUrl: '172.16.16.101:8081', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
                             repository: 'spring-boot-api-example-release', 
