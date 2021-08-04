@@ -4,7 +4,9 @@ pipeline {
 	
         stage('Build') {
         	steps {
-                sh './gradlew -b build.gradle clean build'
+                script {
+                    sh './gradlew -b build.gradle clean build'
+                }        
             }
         }
          
@@ -12,19 +14,25 @@ pipeline {
                 parallel {
                     stage('Archival') {
                         steps {
-                            archiveArtifacts 'build/libs/*.?ar'
+                            script {
+                                archiveArtifacts 'build/libs/*.?ar'
+                            }   
                         }
                     }
                     // stage('SonarQube analysis') {
                     //     steps {
+                    // script {
                     //         withSonarQubeEnv('sonar') {
                     //         sh './gradlew  sonarqube'
+                    //     } 
                     //     }
                     //     }
                     // }
                     stage('Test Reports') {
                         steps {
-                            junit 'build/test-results/test/*.xml'
+                            script{
+                                junit 'build/test-results/test/*.xml'
+                            } 
                         }
                     }
                 }
@@ -45,7 +53,7 @@ pipeline {
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
                         [[  artifactId: 'myTeam', 
-                            file: 'build/libs/myTeam.war', 
+                            file: 'build/libs/*.war', //myTeam.war
                             type: 'war']], 
                             credentialsId: 'nexusAdminCreds', 
                             groupId: 'com.nisum.mytime', 

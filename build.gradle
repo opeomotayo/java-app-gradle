@@ -10,7 +10,7 @@ plugins {
 
 war {
 	dependsOn test
-	baseName = 'myTeam'
+	// baseName = 'myTeam'
 	version = ''
 }
 
