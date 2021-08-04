@@ -32,7 +32,29 @@ pipeline {
                
             stage('Artifact Uploader') {
                 steps {
-                    nexusArtifactUploader artifacts: [[artifactId: 'myTeam', file: 'build/libs/myTeam.war', type: 'war']], credentialsId: 'nexusAdminCreds', groupId: 'com.nisum.mytime', nexusUrl: '10.3.45.130:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '1.0.${BUILD_NUMBER}'
+                    script {
+                        // echo "artifactId: $artifactId"
+                        // echo "file: $file"
+                        // echo "type: $type"
+                        // echo "credentialsId: $credentialsId"
+                        // echo "groupId: $groupId" 
+                        // echo "nexusUrl: $nexusUrl"
+                        // echo "nexusVersion: $nexusVersion" 
+                        // echo "protocol: $protocol" 
+                        // echo "repository: $repository"
+                        // echo "version: $version"
+                        nexusArtifactUploader artifacts: 
+                        [[  artifactId: 'myTeam', 
+                            file: 'build/libs/myTeam.war', 
+                            type: 'war']], 
+                            credentialsId: 'nexusAdminCreds', 
+                            groupId: 'com.nisum.mytime', 
+                            nexusUrl: 'http://172.16.16.101:8081/nexus', 
+                            nexusVersion: 'nexus3', 
+                            protocol: 'http', 
+                            repository: 'releases', 
+                            version: "1.0.${BUILD_NUMBER}"
+                    }
                 }
             }
             // stage('Deploy to PreProd') {
