@@ -1,9 +1,9 @@
 pipeline {
 	agent any
 
-    options {
-        skipStagesAfterUnstable()
-    }
+    // options {
+    //     skipStagesAfterUnstable()
+    // }
 
 	stages {
 	
@@ -29,16 +29,16 @@ pipeline {
                     //     }
                     //     }
                     // }
-                    stage('Test Reports') {
-                        steps {
-                            sh './gradlew check'
-                        }
-                        post {
-                            always {
-                                junit 'build/reports/**/*.xml' //'build/test-results/test/*.xml'
-                            }
-                        }
-                    }
+                    // stage('Test Reports') {
+                    //     steps {
+                    //         sh './gradlew check'
+                    //     }
+                    //     post {
+                    //         always {
+                    //             junit 'build/reports/**/*.xml' //'build/test-results/test/*.xml'
+                    //         }
+                    //     }
+                    // }
                 }
             }
                
@@ -47,6 +47,7 @@ pipeline {
                     script {
                         sh "pwd"
                         sh "ls -la"
+                        sh "ls -la build/"
                         sh "ls -la build/libs/"
                         // echo "artifactId: $artifactId"
                         // echo "file: $file"
