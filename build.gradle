@@ -50,11 +50,11 @@ test {
 String dockerHubUsernameProperty = findProperty('dockerHubUsername') ?: 'tkgregory'
 String imageName = "${dockerHubUsernameProperty}/spring-boot-api-example:$version"
 
-// docker {
-//     name imageName
-//     files "build/libs/${bootJar.archiveFileName.get()}"
-//     buildArgs([JAR_FILE: bootJar.archiveFileName.get()])
-// }
+docker {
+    name imageName
+    files "build/libs/${bootJar.archiveFileName.get()}"
+    buildArgs([JAR_FILE: bootJar.archiveFileName.get()])
+}
 
 dockerRun {
     name project.name

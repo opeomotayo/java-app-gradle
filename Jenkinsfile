@@ -1,38 +1,42 @@
 pipeline {
 	agent any
+
+    options {
+        skipStagesAfterUnstable()
+    }
+
 	stages {
 	
         stage('Build') {
         	steps {
-                script {
-                    sh './gradlew -b build.gradle clean build'
+                sh './gradlew -b build.gradle clean build'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true //archiveArtifacts 'build/libs/*.?ar' or rchiveArtifacts 'build/libs/*.jar'
                 }
             }
         }
-         
+        
         stage('Parallel Stages') {
                 parallel {
-                    stage('Archival') {
-                        steps {
-                            script {
-                                archiveArtifacts 'build/libs/*.?ar'
-                            }   
-                        }
-                    }
                     // stage('SonarQube analysis') {
                     //     steps {
                     // script {
                     //         withSonarQubeEnv('sonar') {
-                    //         sh './gradlew  sonarqube'
+                    //         sh './gradlew sonarqube'
                     //     } 
                     //     }
                     //     }
                     // }
                     stage('Test Reports') {
                         steps {
-                            script{
-                                junit 'build/test-results/test/*.xml'
-                            } 
+                            sh './gradlew check'
+                        }
+                        post {
+                            always {
+                                junit 'build/reports/**/*.xml' //'build/test-results/test/*.xml'
+                            }
                         }
                     }
                 }
@@ -56,7 +60,7 @@ pipeline {
                         // echo "version: $version"
                         nexusArtifactUploader artifacts: 
                         [[  artifactId: 'java-app-gradle', 
-                            file: "build/libs/spring-boot-api-example-1.0.0.jar", //build/libs/spring-boot-api-example-0.1.0-SNAPSHOT.jar'
+                            file: "build/libs/spring-boot-api-example-1.0.0.jar",
                             type: 'jar']], 
                             credentialsId: 'nexusAdminCreds', 
                             groupId: 'com.opeomotayo', 
@@ -64,7 +68,7 @@ pipeline {
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
                             repository: 'java-app-gradle-release', 
-                            version: "1.0.${BUILD_NUMBER}" //"1.0.0"
+                            version: "1.0.${BUILD_NUMBER}"
                     }
                 }
             }
@@ -101,3 +105,33 @@ pipeline {
 //     	<p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME}  [${env.BUILD_NUMBER}]</a></p>""",
 // 	)
 // }
+
+ post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'I succeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            // echo 'I failed :('
+
+            // mail to: 'team@example.com',
+            //  subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            //  body: "Something is wrong with ${env.BUILD_URL}"
+
+            // hipchatSend message: "Attention @here ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.",
+            //         color: 'RED'
+
+            // slackSend channel: '#ops-room',
+            //       color: 'good',
+            //       message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+    }
