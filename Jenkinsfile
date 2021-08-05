@@ -18,8 +18,8 @@ pipeline {
             }
         }
         
-        stage('Parallel Stages') {
-                parallel {
+        // stage('Parallel Stages') {
+        //         parallel {
                     // stage('SonarQube analysis') {
                     //     steps {
                     // script {
@@ -39,8 +39,8 @@ pipeline {
                     //         }
                     //     }
                     // }
-                }
-            }
+            //     }
+            // }
                
             stage('Artifact Uploader') {
                 steps {
