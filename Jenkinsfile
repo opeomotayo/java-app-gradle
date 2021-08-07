@@ -108,32 +108,32 @@ pipeline {
 // 	)
 // }
 
- post {
-        always {
-            echo 'One way or another, I have finished'
-            deleteDir() /* clean up our workspace */
-        }
-        success {
-            echo 'I succeeded!'
-        }
-        unstable {
-            echo 'I am unstable :/'
-        }
-        failure {
-            // echo 'I failed :('
+//  post {
+//         always {
+//             echo 'One way or another, I have finished'
+//             deleteDir() /* clean up our workspace */
+//         }
+//         success {
+//             echo 'I succeeded!'
+//         }
+//         unstable {
+//             echo 'I am unstable :/'
+//         }
+//         failure {
+//             // echo 'I failed :('
 
-            // mail to: 'team@example.com',
-            //  subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-            //  body: "Something is wrong with ${env.BUILD_URL}"
+//             // mail to: 'team@example.com',
+//             //  subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+//             //  body: "Something is wrong with ${env.BUILD_URL}"
 
-            // hipchatSend message: "Attention @here ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.",
-            //         color: 'RED'
+//             // hipchatSend message: "Attention @here ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.",
+//             //         color: 'RED'
 
-            // slackSend channel: '#ops-room',
-            //       color: 'good',
-            //       message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
-        }
-        changed {
-            echo 'Things were different before...'
-        }
-    }
+//             // slackSend channel: '#ops-room',
+//             //       color: 'good',
+//             //       message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+//         }
+//         changed {
+//             echo 'Things were different before...'
+//         }
+//     }
